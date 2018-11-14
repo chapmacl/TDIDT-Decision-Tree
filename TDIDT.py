@@ -37,8 +37,10 @@ def Entropy_set(df):
     return entropy
 
 def Entropy_variables(pos, neg):
-    
-    entropy = -(pos/(pos+neg))*math.log2(pos/(pos+neg)) - (neg/(pos+neg))*math.log2(neg/(pos+neg))
+    if (pos == 0 or neg == 0):
+        entropy = 0
+    else:
+        entropy = -(pos/(pos+neg))*math.log2(pos/(pos+neg)) - (neg/(pos+neg))*math.log2(neg/(pos+neg))
     return entropy
 
 def Entropy_columns(df, labels):
