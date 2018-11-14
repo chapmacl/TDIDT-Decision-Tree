@@ -48,12 +48,12 @@ def Entropy_columns(df, labels):
     #parse columns
     for columns in df:
         sum = 0
-        list = pd.concat([df[columns],labels], axis=1)
+        list = pd.concat([df[columns].round(decimals = 2),labels], axis=1)
         list = list.sort_values(by = [columns]).values
         #generate list of unique values in the column
-        p_data = df[columns].unique()
+        p_data = df[columns].round(decimals = 2).unique()
         p_data.sort()
-        
+        entropy_sum = 0
         for row in p_data:
             #array to hold negative and postive values
             count = [0,0]
@@ -63,10 +63,11 @@ def Entropy_columns(df, labels):
                     count[1]+=1
                 elif (row == values[0] and values[1]==0.0):
                     count[0]+=1
-                else:
+                elif (values[0]>row):
                     break
             sum = Entropy_variables(count[1], count[0])*((count[0]+count[1])/len(df[columns]))
-        entropies.append(sum)
+            entropy_sum += sum
+        entropies.append(entropy_sum)
     return entropies
 
 Main()
