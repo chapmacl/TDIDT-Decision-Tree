@@ -45,6 +45,7 @@ def Entropy_variables(pos, neg):
 
 def Entropy_columns(df, labels):
     entropies = []
+    information_gain = []
     #parse columns
     for columns in df:
         sum = 0
@@ -65,7 +66,8 @@ def Entropy_columns(df, labels):
                     count[0]+=1
                 elif (values[0]>row):
                     break
-            sum = Entropy_variables(count[1], count[0])*((count[0]+count[1])/len(df[columns]))
+            ent = Entropy_variables(count[1], count[0])
+            sum = ent*((count[0]+count[1])/len(df[columns]))
             entropy_sum += sum
         entropies.append(entropy_sum)
     return entropies
