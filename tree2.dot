@@ -14,30 +14,30 @@ digraph {
  healthy = 2, trisomic = 30"]
 	pMTOR_319 -> S6_32
 	node [shape=box]
-	S6_32v [label=" samples = 2 
+	S6_32x [label=" samples = 2 
  healthy = 2, trisomic = 0 
  class = 0"]
-	S6_32 -> S6_32v
+	S6_32 -> S6_32x
 	node [shape=box]
-	S6_32q [label=" samples = 29 
+	S6_32i [label=" samples = 29 
  healthy = 0, trisomic = 29 
  class = 1"]
-	S6_32 -> S6_32q
+	S6_32 -> S6_32i
 	node [shape=box]
 	GluR3_286 [label="GluR3 
  samples = 286 
  healthy = 241, trisomic = 45"]
 	pMTOR_319 -> GluR3_286
 	node [shape=box]
-	GluR3_286c [label=" samples = 100 
+	GluR3_286v [label=" samples = 100 
  healthy = 61, trisomic = 39 
  class = 0"]
-	GluR3_286 -> GluR3_286c
+	GluR3_286 -> GluR3_286v
 	node [shape=box]
-	GluR3_286x [label=" samples = 185 
+	GluR3_286g [label=" samples = 185 
  healthy = 179, trisomic = 6 
  class = 0"]
-	GluR3_286 -> GluR3_286x
+	GluR3_286 -> GluR3_286g
 	node [shape=box]
 	AMPKA_381 [label="AMPKA 
  samples = 381 
@@ -49,28 +49,28 @@ digraph {
  healthy = 19, trisomic = 191"]
 	AMPKA_381 -> pNUMB_210
 	node [shape=box]
-	pNUMB_210q [label=" samples = 142 
+	pNUMB_210k [label=" samples = 142 
  healthy = 2, trisomic = 140 
  class = 1"]
-	pNUMB_210 -> pNUMB_210q
+	pNUMB_210 -> pNUMB_210k
 	node [shape=box]
-	pNUMB_2102 [label=" samples = 67 
+	pNUMB_210g [label=" samples = 67 
  healthy = 17, trisomic = 50 
  class = 1"]
-	pNUMB_210 -> pNUMB_2102
+	pNUMB_210 -> pNUMB_210g
 	node [shape=box]
 	APP_170 [label="APP 
  samples = 170 
  healthy = 83, trisomic = 87"]
 	AMPKA_381 -> APP_170
 	node [shape=box]
-	APP_170p [label=" samples = 97 
+	APP_170n [label=" samples = 97 
  healthy = 73, trisomic = 24 
  class = 0"]
-	APP_170 -> APP_170p
+	APP_170 -> APP_170n
 	node [shape=box]
-	APP_170y [label=" samples = 72 
+	APP_170t [label=" samples = 72 
  healthy = 9, trisomic = 63 
  class = 1"]
-	APP_170 -> APP_170y
+	APP_170 -> APP_170t
 }
