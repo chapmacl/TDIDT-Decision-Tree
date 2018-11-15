@@ -186,7 +186,7 @@ def traversal(current, position, tree_dot):
 def predict(tree, data):
     predicted_labels = []
     dims = data.shape
-    for row in range(0, dims[1]):
+    for row in range(0, dims[0]-1):
         predicted_labels.append(classify(tree, data[row]))
     return predicted_labels
 
@@ -205,14 +205,14 @@ def accuracy(pred, true):
     correct = 0
     
     for pr, tr in zip(pred, true):
-        if pr == tr:
+        if pr == float(tr):
             correct = correct + 1
     return float(correct)/len(pred)*100
     
     
 print('Reading Data')
 genes,all_data,class_label = readData("gene_expression_training.csv")
-#print(label)
+
 print('Building tree')
 tree = {}
 tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
@@ -223,8 +223,4 @@ genes,test_data,test_label = readData("gene_expression_test.csv")
 print('Testing Tree')
 predicted = predict(tree, test_data)
 accuracy = accuracy(predicted, test_label)
-print('Decision Tree was %d accurate', accuracy)
-#print(len(genes))
-#avg,best = best_split(attr, class_label)
-#print(information_gain(data[0], class_label))
-#print(information_gain(data[2], class_label))
+print('Decision Tree was ' + str(accuracy) + ' accurate')
