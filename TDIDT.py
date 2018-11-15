@@ -6,7 +6,7 @@ from argparse import ArgumentParser, FileType, ArgumentDefaultsHelpFormatter
 import sys
 import string
 import graphviz as gv
-from test import traverse_tree
+
 
 class Tree(object):
     def __init__(self):
@@ -168,7 +168,7 @@ def tree_dot(outfile, tree):
 def traversal(current, position, tree_dot):
     if current['gene'] == 'leaf':
         tree_dot.attr('node', shape='box')
-        name = 'leaf' + str(random.choice(string.ascii_lowercase + string.digits))
+        name = position['gene'] + str(random.choice(string.ascii_lowercase + string.digits))
         tree_dot.node(name, ''' samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d \n class = %(class)d''' % {'samples': current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1], 'class':current['label']})
         tree_dot.edge(position, name)
     
