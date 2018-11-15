@@ -5,6 +5,8 @@ import pickle
 from argparse import ArgumentParser, FileType, ArgumentDefaultsHelpFormatter
 import sys
 import string
+import graphviz as gv
+from test import traverse_tree
 
 class Tree(object):
     def __init__(self):
@@ -21,11 +23,12 @@ def readData(filename):
     lines = fp.read().split("\n")
 
     genes = lines[0].split(',')
-
+    
     for rows in lines[1:]:
         data = rows.split(',')
         attr_value.append(data[:-1])
         class_label.append(data[-1])
+        
 
     attr_value = attr_value[:-1]
     rez = np.array([[float(attr_value[j][i]) for j in range(len(attr_value))] for i in range(len(attr_value[0]))])
@@ -45,12 +48,12 @@ def calcEntropy(matrix):
 
 def information_gain(attr_values,class_label):
     values = list(set(attr_values))
-    outputs = list(set(class_label))
+    labels = list(set(class_label))
 
-    matrix = np.zeros((len(values), len(outputs)))
+    matrix = np.zeros((len(values), len(labels)))
 
     for i in range(len(attr_values)):
-        matrix[values.index(attr_values[i]), outputs.index(class_label[i])] += 1
+        matrix[values.index(attr_values[i]), labels.index(class_label[i])] += 1
 
     h_s = calcEntropy(matrix.sum(axis=0))
     h_s_a = 0
@@ -59,6 +62,7 @@ def information_gain(attr_values,class_label):
         h_s_a += sum(matrix[i,:])/float(len(attr_values))*calcEntropy(matrix[i,:])
         #print(sum(matrix[i,:]),float(len(attrib)))
 
+    #gain
     return h_s-h_s_a
 
 
@@ -112,6 +116,7 @@ def splitData(best_attribute,data,class_label):
     left_data = []
     right_label = []
     left_label = []
+    
 
     for i in range(0, len(data[best_attribute[2]])-1):
         if best_attribute[0] < data[best_attribute[2]][i]:
@@ -126,32 +131,67 @@ def splitData(best_attribute,data,class_label):
   
 def tdidt(genes,data,class_label,depth,tree):
     if depth >= 3 or len(data) == 0 or class_label.count(0) == len(data) or class_label.count(1) == len(data):
-        tree['type'] = 'leaf'
+        tree['gene'] = 'leaf'
         tree['children'] = []
         tree['value'] = [class_label.count(0), class_label.count(1)]
         tree['label'] = max(set(class_label), key = class_label.count)
+        dims = data.shape
+        tree['data samples'] = dims[1]
         return tree
     else:
         best_attribute = bestAttribute(data,class_label)
-        tree['children'] = []
+        
         tree['decision'] = best_attribute[0]
         tree['gain'] = best_attribute[1]
         tree['id'] = best_attribute[2]
         tree['gene'] = genes[best_attribute[2]]
+        dims = data.shape
+        tree['data samples'] = dims[1]
         tree['value'] = [class_label.count(0), class_label.count(1)]
-
+        tree['children'] = []
+        
         right_data,right_label,left_data,left_label = splitData(best_attribute,data,class_label)
         #returns one column!!
         tree['children'].append({})
-        return tdidt(genes,right_data,right_label,depth+1,tree['children'][-1])
+        tdidt(genes,left_data,left_label,depth+1,tree['children'][-1])
+        
         tree['children'].append({})
-        return tdidt(genes,left_data,left_label,depth+1,tree['children'][-1])
+        tdidt(genes,right_data,right_label,depth+1,tree['children'][-1])
 
-
-genes,data,class_label = readData("gene_expression_training.csv")
+def tree_dot(outfile, tree):
+    tree_dot = gv.Digraph(format='svg',engine='dot')
+    traversal(tree, 'root', tree_dot)
+    f = open(outfile,'w+')
+    f.write(tree_dot.source)
+    f.close() 
+    
+def traversal(current, position, tree_dot):
+    if current['gene'] == 'leaf':
+        tree_dot.attr('node', shape='box')
+        name = 'leaf' + str(random.choice(string.ascii_lowercase + string.digits))
+        tree_dot.node(name, ''' samples = %(samples)d \n healthy = %(healthy)s, trisomic = %(trisomic) \n class = %(class)''' % {'samples': current['samples'],'healthy':current['value'][0], 'trisomic': current['value'][1], 'class':current['label']})
+        tree_dot.edge(position, name)
+    
+    else:
+        tree_dot.attr('node', shape='box')
+        name = current['gene'] + '_' + str(current['data samples'])
+        tree_dot.node(name = name, label = '''%(property_name)s \n samples = %(samples)d \n healthy = %(healthy)s, trisomic = %(trisomic)''' % {'property_name': current['gene'],'samples':current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1]})
+        
+        if position != 'root':
+            tree_dot.edge(position, name)
+    
+    for children in current['children']:
+        traversal(children, name, tree_dot)
+    
+    
+print('Reading Data')
+genes,all_data,class_label = readData("gene_expression_training.csv")
 #print(label)
-
-print(tdidt(genes,data,class_label,0,{}))
+print('Building tree')
+tree = {}
+tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
+tree_dot('tree2.dot', tree)
+print(tree)
 
 #print(len(genes))
 #avg,best = best_split(attr, class_label)
