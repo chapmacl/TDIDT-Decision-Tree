@@ -14,30 +14,30 @@ digraph {
  healthy = 2, trisomic = 30"]
 	pMTOR_319 -> S6_32
 	node [shape=box]
-	leafm [label=" samples = 2 
+	leafw [label=" samples = 2 
  healthy = 2, trisomic = 0 
  class = 0"]
-	S6_32 -> leafm
+	S6_32 -> leafw
 	node [shape=box]
-	leafs [label=" samples = 29 
+	leaff [label=" samples = 29 
  healthy = 0, trisomic = 29 
  class = 1"]
-	S6_32 -> leafs
+	S6_32 -> leaff
 	node [shape=box]
 	GluR3_286 [label="GluR3 
  samples = 286 
  healthy = 241, trisomic = 45"]
 	pMTOR_319 -> GluR3_286
 	node [shape=box]
-	leafy [label=" samples = 100 
+	leafj [label=" samples = 100 
  healthy = 61, trisomic = 39 
  class = 0"]
-	GluR3_286 -> leafy
+	GluR3_286 -> leafj
 	node [shape=box]
-	leaf0 [label=" samples = 185 
+	leafe [label=" samples = 185 
  healthy = 179, trisomic = 6 
  class = 0"]
-	GluR3_286 -> leaf0
+	GluR3_286 -> leafe
 	node [shape=box]
 	AMPKA_381 [label="AMPKA 
  samples = 381 
@@ -49,28 +49,28 @@ digraph {
  healthy = 19, trisomic = 191"]
 	AMPKA_381 -> pNUMB_210
 	node [shape=box]
-	leafo [label=" samples = 142 
+	leafu [label=" samples = 142 
  healthy = 2, trisomic = 140 
  class = 1"]
-	pNUMB_210 -> leafo
+	pNUMB_210 -> leafu
 	node [shape=box]
-	leafb [label=" samples = 67 
+	leafh [label=" samples = 67 
  healthy = 17, trisomic = 50 
  class = 1"]
-	pNUMB_210 -> leafb
+	pNUMB_210 -> leafh
 	node [shape=box]
 	APP_170 [label="APP 
  samples = 170 
  healthy = 83, trisomic = 87"]
 	AMPKA_381 -> APP_170
 	node [shape=box]
-	leaf7 [label=" samples = 97 
+	leafr [label=" samples = 97 
  healthy = 73, trisomic = 24 
  class = 0"]
-	APP_170 -> leaf7
+	APP_170 -> leafr
 	node [shape=box]
-	leafj [label=" samples = 72 
+	leafy [label=" samples = 72 
  healthy = 9, trisomic = 63 
  class = 1"]
-	APP_170 -> leafj
+	APP_170 -> leafy
 }
