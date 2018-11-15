@@ -185,9 +185,9 @@ def traversal(current, position, tree_dot):
 
 def predict(tree, data):
     predicted_labels = []
-    dims = data.shape
-    for row in range(0, dims[0]-1):
-        predicted_labels.append(classify(tree, data[row]))
+    
+    for row in data:
+        predicted_labels.append(classify(tree, row))
     return predicted_labels
 
 def classify(tree, data_row):
@@ -219,7 +219,12 @@ tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
 tree_dot('tree2.dot', tree)
 print(tree)
 print('Loading Testing Data')
-genes,test_data,test_label = readData("gene_expression_test.csv")
+
+file = [line.strip().split(',') for line in open('gene_expression_test.csv','r')]
+genes = file[0][:-1]
+
+test_data = [[float(el) for el in row[:-1]] for row in file[1:]]
+test_label = [float(row[-1]) for row in file[1:]]
 print('Testing Tree')
 predicted = predict(tree, test_data)
 accuracy = accuracy(predicted, test_label)
