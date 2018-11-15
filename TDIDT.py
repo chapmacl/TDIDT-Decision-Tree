@@ -168,7 +168,7 @@ def tree_dot(outfile, tree):
 def traversal(current, position, tree_dot):
     if current['gene'] == 'leaf':
         tree_dot.attr('node', shape='box')
-        name = position['gene'] + str(random.choice(string.ascii_lowercase + string.digits))
+        name = position + str(random.choice(string.ascii_lowercase + string.digits))
         tree_dot.node(name, ''' samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d \n class = %(class)d''' % {'samples': current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1], 'class':current['label']})
         tree_dot.edge(position, name)
     
@@ -182,6 +182,32 @@ def traversal(current, position, tree_dot):
     
     for children in current['children']:
         traversal(children, name, tree_dot)
+
+def predict(tree, data):
+    predicted_labels = []
+    dims = data.shape
+    for row in range(0, dims[1]):
+        predicted_labels.append(classify(tree, data[row]))
+    return predicted_labels
+
+def classify(tree, data_row):
+    tree_copy = tree
+    while True:
+        if tree_copy['gene'] == 'leaf':
+            return tree_copy['label']
+        elif data_row[tree_copy['id']] > tree_copy['decision']:
+            tree_copy = tree_copy['children'][1]
+            continue
+        else:
+            tree_copy = tree_copy['children'][0]
+        
+def accuracy(pred, true):
+    correct = 0
+    
+    for pr, tr in zip(pred, true):
+        if pr == tr:
+            correct = correct + 1
+    return float(correct)/len(pred)*100
     
     
 print('Reading Data')
@@ -192,7 +218,12 @@ tree = {}
 tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
 tree_dot('tree2.dot', tree)
 print(tree)
-
+print('Loading Testing Data')
+genes,test_data,test_label = readData("gene_expression_test.csv")
+print('Testing Tree')
+predicted = predict(tree, test_data)
+accuracy = accuracy(predicted, test_label)
+print('Decision Tree was %d accurate', accuracy)
 #print(len(genes))
 #avg,best = best_split(attr, class_label)
 #print(information_gain(data[0], class_label))
