@@ -28,6 +28,11 @@ def readData(filename):
         
 
     attr_value = attr_value[:-1]
+    for row in range(0, len(attr_value)):
+        for i in range(0, len(attr_value[row])):
+            if attr_value[row][i] == "":
+                attr_value[row][i] = random.randint(0, 1)
+                
     rez = np.array([[float(attr_value[j][i]) for j in range(len(attr_value))] for i in range(len(attr_value[0]))])
 
     return genes[:-1], rez, class_label[:-1]
@@ -208,12 +213,12 @@ def accuracy(pred, true):
     
     
 print('Reading Data')
-genes,all_data,class_label = readData("gene_expression_training.csv")
+genes,all_data,class_label = readData("gene_expression_with_missing_values.csv")
 
 print('Building tree')
 tree = {}
 tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
-tree_dot('tree.dot', tree)
+tree_dot('tree4a.dot', tree)
 print(tree)
 print('Loading Testing Data')
 

@@ -3,6 +3,7 @@ import copy
 import random
 import string
 import graphviz as gv
+import pandas as pd
 
 
 class Tree(object):
@@ -27,7 +28,15 @@ def readData(filename):
         class_label.append(data[-1])
         
 
+    df = pd.read_csv(filename)
+    
     attr_value = attr_value[:-1]
+    for row in range(0, len(attr_value)):
+        for i in range(0, len(attr_value[row])):
+            if attr_value[row][i] == "":
+                temp = df.iloc[:,i].copy()
+                attr_value[row][i] = str(temp.median())
+                
     rez = np.array([[float(attr_value[j][i]) for j in range(len(attr_value))] for i in range(len(attr_value[0]))])
 
     return genes[:-1], rez, class_label[:-1]
@@ -208,12 +217,12 @@ def accuracy(pred, true):
     
     
 print('Reading Data')
-genes,all_data,class_label = readData("gene_expression_training.csv")
+genes,all_data,class_label = readData("gene_expression_with_missing_values.csv")
 
 print('Building tree')
 tree = {}
 tdidt(genes,all_data,[float(i) for i in class_label],0,tree)
-tree_dot('tree.dot', tree)
+tree_dot('tree4c.dot', tree)
 print(tree)
 print('Loading Testing Data')
 
