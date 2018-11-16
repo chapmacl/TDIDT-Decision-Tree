@@ -1,76 +1,76 @@
 digraph {
 	node [shape=box]
-	APP_1080 [label="APP 
+	APP_1080 [label="APP >= 0.400832 
  samples = 1080 
  healthy = 570, trisomic = 510"]
 	node [shape=box]
-	AMPKA_530 [label="AMPKA 
+	AMPKA_530 [label="AMPKA >= 0.314815 
  samples = 530 
  healthy = 412, trisomic = 118"]
 	APP_1080 -> AMPKA_530
 	node [shape=box]
-	APP_127 [label="APP 
+	APP_127 [label="APP >= 0.321001 
  samples = 127 
  healthy = 52, trisomic = 75"]
 	AMPKA_530 -> APP_127
 	node [shape=box]
-	APP_1270 [label=" samples = 44 
+	APP_127v [label=" samples = 44 
  healthy = 39, trisomic = 5 
  class = 0"]
-	APP_127 -> APP_1270
+	APP_127 -> APP_127v
 	node [shape=box]
-	APP_127x [label=" samples = 82 
+	APP_127c [label=" samples = 82 
  healthy = 13, trisomic = 69 
  class = 1"]
-	APP_127 -> APP_127x
+	APP_127 -> APP_127c
 	node [shape=box]
-	ITSN1_402 [label="ITSN1 
+	ITSN1_402 [label="ITSN1 >= 0.511142 
  samples = 402 
  healthy = 360, trisomic = 42"]
 	AMPKA_530 -> ITSN1_402
 	node [shape=box]
-	ITSN1_402v [label=" samples = 227 
+	ITSN1_402p [label=" samples = 227 
  healthy = 224, trisomic = 3 
  class = 0"]
-	ITSN1_402 -> ITSN1_402v
+	ITSN1_402 -> ITSN1_402p
 	node [shape=box]
-	ITSN1_402n [label=" samples = 174 
+	ITSN1_402p [label=" samples = 174 
  healthy = 136, trisomic = 38 
  class = 0"]
-	ITSN1_402 -> ITSN1_402n
+	ITSN1_402 -> ITSN1_402p
 	node [shape=box]
-	AMPKA_549 [label="AMPKA 
+	AMPKA_549 [label="AMPKA >= 0.368606 
  samples = 549 
  healthy = 158, trisomic = 391"]
 	APP_1080 -> AMPKA_549
 	node [shape=box]
-	pNUMB_243 [label="pNUMB 
+	pNUMB_243 [label="pNUMB >= 0.417289 
  samples = 243 
  healthy = 16, trisomic = 227"]
 	AMPKA_549 -> pNUMB_243
 	node [shape=box]
-	pNUMB_243p [label=" samples = 235 
+	pNUMB_243l [label=" samples = 235 
  healthy = 9, trisomic = 226 
  class = 1"]
-	pNUMB_243 -> pNUMB_243p
+	pNUMB_243 -> pNUMB_243l
 	node [shape=box]
-	pNUMB_243d [label=" samples = 7 
+	pNUMB_243u [label=" samples = 7 
  healthy = 7, trisomic = 0 
  class = 0"]
-	pNUMB_243 -> pNUMB_243d
+	pNUMB_243 -> pNUMB_243u
 	node [shape=box]
-	APP_305 [label="APP 
+	APP_305 [label="APP >= 0.458150 
  samples = 305 
  healthy = 142, trisomic = 163"]
 	AMPKA_549 -> APP_305
 	node [shape=box]
-	APP_3052 [label=" samples = 169 
+	APP_305a [label=" samples = 169 
  healthy = 126, trisomic = 43 
  class = 0"]
-	APP_305 -> APP_3052
+	APP_305 -> APP_305a
 	node [shape=box]
-	APP_305x [label=" samples = 135 
+	APP_3059 [label=" samples = 135 
  healthy = 16, trisomic = 119 
  class = 1"]
-	APP_305 -> APP_305x
+	APP_305 -> APP_3059
 }

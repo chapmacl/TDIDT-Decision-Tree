@@ -1,76 +1,76 @@
 digraph {
 	node [shape=box]
-	APP_701 [label="APP 
+	APP_701 [label="APP >= 0.398750 
  samples = 701 
  healthy = 346, trisomic = 355"]
 	node [shape=box]
-	pMTOR_319 [label="pMTOR 
+	pMTOR_319 [label="pMTOR >= 0.602850 
  samples = 319 
  healthy = 243, trisomic = 76"]
 	APP_701 -> pMTOR_319
 	node [shape=box]
-	S6_32 [label="S6 
+	S6_32 [label="S6 >= 0.376350 
  samples = 32 
  healthy = 2, trisomic = 30"]
 	pMTOR_319 -> S6_32
 	node [shape=box]
-	S6_32l [label=" samples = 2 
+	S6_32f [label=" samples = 2 
  healthy = 2, trisomic = 0 
  class = 0"]
-	S6_32 -> S6_32l
+	S6_32 -> S6_32f
 	node [shape=box]
-	S6_32n [label=" samples = 29 
+	S6_32c [label=" samples = 29 
  healthy = 0, trisomic = 29 
  class = 1"]
-	S6_32 -> S6_32n
+	S6_32 -> S6_32c
 	node [shape=box]
-	GluR3_286 [label="GluR3 
+	GluR3_286 [label="GluR3 >= 0.204400 
  samples = 286 
  healthy = 241, trisomic = 45"]
 	pMTOR_319 -> GluR3_286
 	node [shape=box]
-	GluR3_286n [label=" samples = 100 
+	GluR3_2862 [label=" samples = 100 
  healthy = 61, trisomic = 39 
  class = 0"]
-	GluR3_286 -> GluR3_286n
+	GluR3_286 -> GluR3_2862
 	node [shape=box]
-	GluR3_2863 [label=" samples = 185 
+	GluR3_286a [label=" samples = 185 
  healthy = 179, trisomic = 6 
  class = 0"]
-	GluR3_286 -> GluR3_2863
+	GluR3_286 -> GluR3_286a
 	node [shape=box]
-	AMPKA_381 [label="AMPKA 
+	AMPKA_381 [label="AMPKA >= 0.384900 
  samples = 381 
  healthy = 103, trisomic = 278"]
 	APP_701 -> AMPKA_381
 	node [shape=box]
-	pNUMB_210 [label="pNUMB 
+	pNUMB_210 [label="pNUMB >= 0.365050 
  samples = 210 
  healthy = 19, trisomic = 191"]
 	AMPKA_381 -> pNUMB_210
 	node [shape=box]
-	pNUMB_210c [label=" samples = 142 
+	pNUMB_210o [label=" samples = 142 
  healthy = 2, trisomic = 140 
  class = 1"]
-	pNUMB_210 -> pNUMB_210c
+	pNUMB_210 -> pNUMB_210o
 	node [shape=box]
-	pNUMB_210p [label=" samples = 67 
+	pNUMB_210g [label=" samples = 67 
  healthy = 17, trisomic = 50 
  class = 1"]
-	pNUMB_210 -> pNUMB_210p
+	pNUMB_210 -> pNUMB_210g
 	node [shape=box]
-	APP_170 [label="APP 
+	APP_170 [label="APP >= 0.458700 
  samples = 170 
  healthy = 83, trisomic = 87"]
 	AMPKA_381 -> APP_170
 	node [shape=box]
-	APP_170y [label=" samples = 97 
+	APP_170l [label=" samples = 97 
  healthy = 73, trisomic = 24 
  class = 0"]
-	APP_170 -> APP_170y
+	APP_170 -> APP_170l
 	node [shape=box]
-	APP_1705 [label=" samples = 72 
+	APP_170f [label=" samples = 72 
  healthy = 9, trisomic = 63 
  class = 1"]
-	APP_170 -> APP_1705
+	APP_170 -> APP_170f
 }

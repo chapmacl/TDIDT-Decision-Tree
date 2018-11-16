@@ -1,76 +1,76 @@
 digraph {
 	node [shape=box]
-	APP_1080 [label="APP 
+	APP_1080 [label="APP >= 0.405206 
  samples = 1080 
  healthy = 570, trisomic = 510"]
 	node [shape=box]
-	AMPKA_567 [label="AMPKA 
- samples = 567 
- healthy = 432, trisomic = 135"]
-	APP_1080 -> AMPKA_567
+	AMPKA_566 [label="AMPKA >= 0.314815 
+ samples = 566 
+ healthy = 432, trisomic = 134"]
+	APP_1080 -> AMPKA_566
 	node [shape=box]
-	APP_134 [label="APP 
+	APP_134 [label="APP >= 0.351853 
  samples = 134 
  healthy = 52, trisomic = 82"]
-	AMPKA_567 -> APP_134
+	AMPKA_566 -> APP_134
 	node [shape=box]
-	APP_134m [label=" samples = 76 
+	APP_134x [label=" samples = 76 
  healthy = 51, trisomic = 25 
  class = 0"]
-	APP_134 -> APP_134m
+	APP_134 -> APP_134x
 	node [shape=box]
-	APP_134p [label=" samples = 57 
+	APP_134r [label=" samples = 57 
  healthy = 1, trisomic = 56 
  class = 1"]
-	APP_134 -> APP_134p
+	APP_134 -> APP_134r
 	node [shape=box]
-	GluR3_432 [label="GluR3 
- samples = 432 
- healthy = 380, trisomic = 52"]
-	AMPKA_567 -> GluR3_432
+	GluR3_431 [label="GluR3 >= 0.202230 
+ samples = 431 
+ healthy = 380, trisomic = 51"]
+	AMPKA_566 -> GluR3_431
 	node [shape=box]
-	GluR3_4324 [label=" samples = 128 
- healthy = 89, trisomic = 39 
+	GluR3_431d [label=" samples = 127 
+ healthy = 89, trisomic = 38 
  class = 0"]
-	GluR3_432 -> GluR3_4324
+	GluR3_431 -> GluR3_431d
 	node [shape=box]
-	GluR3_432g [label=" samples = 303 
+	GluR3_431p [label=" samples = 303 
  healthy = 291, trisomic = 12 
  class = 0"]
-	GluR3_432 -> GluR3_432g
+	GluR3_431 -> GluR3_431p
 	node [shape=box]
-	AMPKA_512 [label="AMPKA 
- samples = 512 
- healthy = 138, trisomic = 374"]
-	APP_1080 -> AMPKA_512
+	AMPKA_513 [label="AMPKA >= 0.372946 
+ samples = 513 
+ healthy = 138, trisomic = 375"]
+	APP_1080 -> AMPKA_513
 	node [shape=box]
-	pNUMB_238 [label="pNUMB 
+	pNUMB_238 [label="pNUMB >= 0.372905 
  samples = 238 
  healthy = 14, trisomic = 224"]
-	AMPKA_512 -> pNUMB_238
+	AMPKA_513 -> pNUMB_238
 	node [shape=box]
-	pNUMB_2388 [label=" samples = 231 
- healthy = 8, trisomic = 223 
+	pNUMB_238z [label=" samples = 189 
+ healthy = 2, trisomic = 187 
  class = 1"]
-	pNUMB_238 -> pNUMB_2388
+	pNUMB_238 -> pNUMB_238z
 	node [shape=box]
-	pNUMB_238c [label=" samples = 6 
- healthy = 6, trisomic = 0 
- class = 0"]
-	pNUMB_238 -> pNUMB_238c
+	pNUMB_238a [label=" samples = 48 
+ healthy = 12, trisomic = 36 
+ class = 1"]
+	pNUMB_238 -> pNUMB_238a
 	node [shape=box]
-	APP_273 [label="APP 
- samples = 273 
- healthy = 124, trisomic = 149"]
-	AMPKA_512 -> APP_273
+	APP_274 [label="APP >= 0.458705 
+ samples = 274 
+ healthy = 124, trisomic = 150"]
+	AMPKA_513 -> APP_274
 	node [shape=box]
-	APP_273x [label=" samples = 146 
+	APP_2743 [label=" samples = 146 
  healthy = 108, trisomic = 38 
  class = 0"]
-	APP_273 -> APP_273x
+	APP_274 -> APP_2743
 	node [shape=box]
-	APP_273j [label=" samples = 126 
- healthy = 16, trisomic = 110 
+	APP_274v [label=" samples = 127 
+ healthy = 16, trisomic = 111 
  class = 1"]
-	APP_273 -> APP_273j
+	APP_274 -> APP_274v
 }

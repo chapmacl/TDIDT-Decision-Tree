@@ -166,13 +166,13 @@ def traversal(current, position, tree_dot):
     if current['gene'] == 'leaf':
         tree_dot.attr('node', shape='box')
         name = position + str(random.choice(string.ascii_lowercase + string.digits))
-        tree_dot.node(name, ''' samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d \n class = %(class)d''' % {'samples': current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1], 'class':current['label']})
+        tree_dot.node(name, ''' samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d \n class = %(class)d''' % {'samples': current['data samples'], 'healthy':current['value'][0], 'trisomic': current['value'][1], 'class':current['label']})
         tree_dot.edge(position, name)
     
     else:
         tree_dot.attr('node', shape='box')
         name = current['gene'] + '_' + str(current['data samples'])
-        tree_dot.node(name = name, label = '''%(property_name)s \n samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d''' % {'property_name': current['gene'],'samples':current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1]})
+        tree_dot.node(name = name, label = '''%(property_name)s >= %(dec)f \n samples = %(samples)d \n healthy = %(healthy)d, trisomic = %(trisomic)d''' % {'property_name': current['gene'], 'dec': current['decision'], 'samples':current['data samples'],'healthy':current['value'][0], 'trisomic': current['value'][1]})
         
         if position != 'root':
             tree_dot.edge(position, name)
